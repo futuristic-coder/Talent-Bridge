@@ -1,6 +1,5 @@
 import { Link } from "react-router";
 import { SignInButton } from "@clerk/clerk-react";
-import { useEffect, useState } from "react";
 import {
   ArrowRightIcon,
   CheckIcon,
@@ -12,18 +11,7 @@ import {
   ZapIcon,
 } from "lucide-react";
 
-function HomePage() {
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("home-theme");
-    if (savedTheme === "light") setIsDark(false);
-    if (savedTheme === "dark") setIsDark(true);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("home-theme", isDark ? "dark" : "light");
-  }, [isDark]);
+function HomePage({ isDark, setIsDark }) {
 
   const primaryButtonClass =
     "group inline-flex items-center gap-2 rounded-xl bg-indigo-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-900/30 transition hover:-translate-y-0.5 hover:bg-indigo-400";
